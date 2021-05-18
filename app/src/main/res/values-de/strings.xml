@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">Shift Me!</string>
+    <string name="shift_me">Shift Me!</string>
+    <string name="moves">Züge: \t%1$s</string>
+    <string name="time">Zeit: \t\t%1$s</string>
+    <string name="reset">Zurücksetzen</string>
+    <string name="newGame">Neues Spiel</string>
+    <string name="help">Hilfe</string>
+    <string name="about">Über</string>
+    <string name="pause">Pause</string>
+    <string name="start">Start</string>
+    <string name="level3x3">3x3</string>
+    <string name="level4x4">4x4</string>
+    <string name="level5x5">5x5</string>
+    <string name="level6x6">6x6</string>
+    <string name="level7x7">7x7</string>
+    <string name="level8x8">8x8</string>
+    <string name="level9x9">9x9</string>
+    <string name="level10x10">10x10</string>
+    <string name="wonMessage">Sie haben gewonnen!</string>
+    <string name="backgroundContentDescription">Hintergrund</string>
+    <string name="gameExplanationTitle">Spielprinzip</string>
+    <string name="gameExplanation">
+        Das Ziel ist es, die Zahlen zu sortieren, sodass sie in der richtigen Reihenfolge angeordnert sind, also z.B. 1,2,3|4,5,6|7,8.\n\nDabei kann immer nur ein Stein verschoben werden, der einen freien Nachbarn hat. Also ist vom Stein links, rechts, oben oder unten ein freies Feld, so kann der Stein verschoben werden.\n\nUm einen Stein zu verschieben, müssen Sie einfach auf den Stein klicken, er wird dann automatisch an die richtige Stelle verschoben!
+    </string>
+    <string name="strAboutText">Programmiert von Code A Software (Andreas Leopold)</string>
+    <string name="icons8">Icons verwendet von \nhttps://icons8.com/</string>
+    <string name="version">Version 1.0.0 (© 2021)</string>
+</resources>

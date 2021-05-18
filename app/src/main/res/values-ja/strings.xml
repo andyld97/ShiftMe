@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">Shift Me!</string>
+    <string name="shift_me">Shift Me!</string>
+    <string name="moves">電車です: \t%1$s</string>
+    <string name="time">時間です: \t\t%1$s</string>
+    <string name="reset">リセット</string>
+    <string name="newGame">ニュー・スピール</string>
+    <string name="pause">休憩</string>
+    <string name="help">ヘルプ</string>
+    <string name="about">情報</string>
+    <string name="start">スタート</string>
+    <string name="level3x3">3x3</string>
+    <string name="level4x4">4x4</string>
+    <string name="level5x5">5x5</string>
+    <string name="level6x6">6x6</string>
+    <string name="level7x7">7x7</string>
+    <string name="level8x8">8x8</string>
+    <string name="level9x9">9x9</string>
+    <string name="level10x10">10x10</string>
+    <string name="wonMessage">あなたの勝ちです!</string>
+    <string name="backgroundContentDescription">背景</string>
+    <string name="gameExplanationTitle">ゲームの原理</string>
+    <string name="gameExplanation">
+        目標は、1,2,3|4,5,6|7,8のように、数字が正しい順序で並ぶように並べることです。\n\n自由な隣人がいる駒しか動かせません。つまり、石の左、右、上、下のいずれかに空きのあるマスがあれば、石を動かすことができるのです。\n\n石を移動させるには、その石をクリックするだけで、自動的に正しい場所に移動されます。
+    </string>
+    <string name="strAboutText">プログラム：Code A Software (Andreas Leopold)</string>
+    <string name="icons8">で使用されているアイコンです\nhttps://icons8.com/</string>
+    <string name="version">Version 1.0.0 (© 2021)</string>
+</resources>

@@ -1,0 +1,16 @@
+<resources>
+    <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:statusBarColor">@color/colorTransparentBlueBackground</item>
+    </style>
+
+    <style name="SubTheme" parent="Theme.AppCompat.Light">
+        <item name="colorPrimary">@color/colorTransparentBlueBackground</item>
+        <item name="colorPrimaryDark">#FFF</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:statusBarColor">@color/colorTransparentBlueBackground</item>
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
+</resources>

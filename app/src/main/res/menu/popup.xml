@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/menuStartPause" android:title="" />
+    <item android:id="@+id/menuReset" android:title="@string/reset" />
+    <item android:title="@string/newGame">
+        <menu>
+            <item android:id="@+id/menu3x3" android:title="@string/level3x3" />
+            <item android:id="@+id/menu4x4" android:title="@string/level4x4" />
+            <item android:id="@+id/menu5x5" android:title="@string/level5x5" />
+            <item android:id="@+id/menu6x6" android:title="@string/level6x6" />
+            <item android:id="@+id/menu7x7" android:title="@string/level7x7" />
+            <item android:id="@+id/menu8x8" android:title="@string/level8x8" />
+            <item android:id="@+id/menu9x9" android:title="@string/level9x9" />
+            <item android:id="@+id/menu10x10" android:title="@string/level10x10" />
+        </menu>
+    </item>
+</menu>

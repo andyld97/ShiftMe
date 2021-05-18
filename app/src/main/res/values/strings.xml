@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">Shift Me!</string>
+    <string name="shift_me">Shift Me!</string>
+    <string name="moves">Moves: \t%1$s</string>
+    <string name="time">Time: \t\t%1$s</string>
+    <string name="reset">Reset</string>
+    <string name="newGame">New game</string>
+    <string name="help">Help</string>
+    <string name="about">About</string>
+    <string name="pause">Pause</string>
+    <string name="start">Start</string>
+    <string name="level3x3">3x3</string>
+    <string name="level4x4">4x4</string>
+    <string name="level5x5">5x5</string>
+    <string name="level6x6">6x6</string>
+    <string name="level7x7">7x7</string>
+    <string name="level8x8">8x8</string>
+    <string name="level9x9">9x9</string>
+    <string name="level10x10">10x10</string>
+    <string name="wonMessage">You have won!</string>
+    <string name="backgroundContentDescription">Background</string>.
+    <string name="gameExplanationTitle">Game principle</string>.
+    <string name="gameExplanation">
+        The aim is to sort the numbers so that they are arranged in the correct order, e.g. 1,2,3|4,5,6|7,8.\n\nOnly a stone that has a free neighbour can be moved. So if there is a free space to the left, right, top or bottom of the stone, the stone can be moved.\n\nTo move a stone, you simply have to click on the stone, it will then automatically be moved to the right place!
+    </string>
+    <string name="strAboutText">Programmed by Code A Software (Andreas Leopold)</string>
+    <string name="icons8">Icons used by \nhttps://icons8.com/</string>.
+    <string name="version">Version 1.0.0 (© 2021)</string>
+</resources>
