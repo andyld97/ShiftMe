@@ -1,25 +1,22 @@
 package code.a.software.shiftme;
 
 import android.content.Intent;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.widget.FrameLayout;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.PopupMenu;
-
-import android.os.Bundle;
-import android.os.Parcelable;
-import android.transition.Visibility;
-import android.util.Log;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.animation.AlphaAnimation;
-import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.RelativeLayout;
-import android.widget.Spinner;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -31,17 +28,21 @@ import java.util.TimerTask;
 import controls.NumberButton;
 import field.DynamicLayout;
 import helpers.Helper;
+import helpers.ImageHelper;
 import helpers.NumberHelper;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
+    private FrameLayout rootLayout = null;
     private RelativeLayout containerLayout = null;
+    private ImageView backgroundImageView = null;
     private TextView txtMoves = null;
     private TextView txtTimer = null;
     private ImageButton playButton = null;
     private ImageButton settingsButton = null;
     private ImageButton helpButton = null;
     private ImageButton aboutButton = null;
+    public static Settings settings;
 
     private boolean isGameOver = false;
     private boolean isGameStarted = false;
@@ -67,7 +68,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         // Initialize views
+        rootLayout = findViewById(R.id.rootLayout);
         containerLayout = findViewById(R.id.containerLayout);
+        backgroundImageView = findViewById(R.id.backgroundImageView);
         playButton = findViewById(R.id.btnPlay);
         playButton.setOnClickListener(this);
         settingsButton = findViewById(R.id.btnSettings);
@@ -95,6 +98,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 MainActivity.this.runOnUiThread(() -> txtTimer.setText(String.format(getString(R.string.time), gameTimer.toString())));
             }
         }, 0, 500);
+
+
+        settings = Settings.readSettings(this);
+        refreshBackground();
+    }
+
+    private void refreshBackground()
+    {
+        if (!settings.getBackgroundImagePath().equals(""))
+            backgroundImageView.setImageDrawable(new BitmapDrawable(getResources(), ImageHelper.loadBitmapWithEXIFOrientation(settings.getBackgroundImagePath())));
+        else
+            backgroundImageView.setImageResource(R.drawable.background);
     }
 
     @Override
@@ -103,6 +118,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         if (!isGameOver && isGameStarted && !isPaused)
             gameTimer.resume();
+
+        settings = Settings.readSettings(this);
+        refreshBackground();
     }
 
     @Override
