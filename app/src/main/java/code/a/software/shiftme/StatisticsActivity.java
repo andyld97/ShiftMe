@@ -1,13 +1,13 @@
 package code.a.software.shiftme;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class StatisticsActivity extends AppCompatActivity {
 
@@ -25,16 +25,16 @@ public class StatisticsActivity extends AppCompatActivity {
         getSupportActionBar().setHomeButtonEnabled(true);
         setTitle("Statistik");
 
-       UserStatistics userStatistics =  MainActivity.settings.getUserStatistics();
+        UserStatistics userStatistics = MainActivity.settings.getUserStatistics();
 
-       TextView txtTotalMoves = findViewById(R.id.txtTotalMoves);
-       txtTotalMoves.setText(String.valueOf(userStatistics.getTotalStatistics().getMoves()));
+        TextView txtTotalMoves = findViewById(R.id.txtTotalMoves);
+        txtTotalMoves.setText(String.valueOf(userStatistics.getTotalStatistics().getMoves()));
 
-       TextView txtTotalTime = findViewById(R.id.txtTotalTimeValue);
-       txtTotalTime.setText(formatTime(userStatistics.getTotalStatistics().getTotalTimePlayed()));
+        TextView txtTotalTime = findViewById(R.id.txtTotalTimeValue);
+        txtTotalTime.setText(formatTime(userStatistics.getTotalStatistics().getTotalTimePlayed()));
 
-       TextView txtTotalSolvedPuzzles = findViewById(R.id.txtTotalSolvedPuzzles);
-       txtTotalSolvedPuzzles.setText(String.valueOf(userStatistics.getTotalStatistics().getPuzzlesSolved()));
+        TextView txtTotalSolvedPuzzles = findViewById(R.id.txtTotalSolvedPuzzles);
+        txtTotalSolvedPuzzles.setText(String.valueOf(userStatistics.getTotalStatistics().getPuzzlesSolved()));
 
         txtCurrentLevelTime = findViewById(R.id.txtCurrentLevelTime);
         txtCurrentLevelTimeAVG = findViewById(R.id.txtCurrentLevelTimeAVG);
@@ -58,12 +58,11 @@ public class StatisticsActivity extends AppCompatActivity {
             }
         });
 
-       displayLevel(0);
+        displayLevel(0);
     }
 
 
-    private void displayLevel(int spinnerIndex)
-    {
+    private void displayLevel(int spinnerIndex) {
         Statistics statistics = MainActivity.settings.getUserStatistics().getLevelStatistics(spinnerIndex);
 
         txtCurrentLevelTime.setText(formatTime(statistics.getTotalTimePlayed()));
@@ -73,8 +72,7 @@ public class StatisticsActivity extends AppCompatActivity {
         txtCurrentLevelSolved.setText(String.valueOf(statistics.getPuzzlesSolved()));
     }
 
-    public String formatTime(long seconds)
-    {
+    public String formatTime(long seconds) {
         long minutes = (seconds / 60) % 60;
         long hours = (seconds / 60) / 60;
         long sec = seconds % 60;

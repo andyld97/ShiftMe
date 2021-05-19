@@ -85,7 +85,6 @@ public class Stopwatch implements Parcelable {
     public long getElapsedTimeHours() { return ((getElapsedTime() / 1000) / 60) / 60;  }
 
     public boolean isRunning() { return running; }
-    
 
     public String toString() {
 

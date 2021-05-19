@@ -7,6 +7,17 @@ public class UserStatistics {
 
     private Statistics levelStatistics[] = {new Statistics(), new Statistics(), new Statistics(), new Statistics(), new Statistics(), new Statistics(), new Statistics(), new Statistics()};
 
+    public static UserStatistics load(SharedPreferences preferences) {
+        UserStatistics userStatistics = new UserStatistics();
+
+        userStatistics.totalStatistics = Statistics.load("total", preferences);
+        for (int i = 0; i < userStatistics.levelStatistics.length; i++) {
+            userStatistics.setLevelStatistics(i, Statistics.load("level" + i, preferences));
+        }
+
+        return userStatistics;
+    }
+
     public Statistics getTotalStatistics() {
         return totalStatistics;
     }
@@ -17,17 +28,6 @@ public class UserStatistics {
 
     public void setLevelStatistics(int level, Statistics statistics) {
         levelStatistics[level] = statistics;
-    }
-
-    public static UserStatistics load(SharedPreferences preferences) {
-        UserStatistics userStatistics = new UserStatistics();
-
-        userStatistics.totalStatistics = Statistics.load("total", preferences);
-        for (int i = 0; i < userStatistics.levelStatistics.length; i++) {
-            userStatistics.setLevelStatistics(i, Statistics.load("level" + i, preferences));
-        }
-
-        return userStatistics;
     }
 
     public void save(SharedPreferences.Editor editor) {

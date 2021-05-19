@@ -105,8 +105,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         refreshBackground();
     }
 
-    private void refreshBackground()
-    {
+    private void refreshBackground() {
         if (!settings.getBackgroundImagePath().equals(""))
             backgroundImageView.setImageDrawable(new BitmapDrawable(getResources(), ImageHelper.loadBitmapWithEXIFOrientation(settings.getBackgroundImagePath())));
         else
@@ -169,7 +168,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         for (int i = 0; i < currentDim; i++) {
             int[] sub = savedInstanceState.getIntArray("state" + i);
-            System.arraycopy(sub,0, gameState[i],0, sub.length);
+            System.arraycopy(sub, 0, gameState[i], 0, sub.length);
         }
 
         gameTimer = savedInstanceState.getParcelable("timer");
@@ -182,14 +181,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
     }
 
-    private void DisplayMoves()
-    {
+    private void DisplayMoves() {
         String result = String.format(getString(R.string.moves), String.valueOf(currentMoves));
         txtMoves.setText(result);
     }
 
-    public void resetCombination()
-    {
+    public void resetCombination() {
         generateGameField(false);
         gameTimer.stop();
         gameTimer.reset();
@@ -200,8 +197,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         isPaused = false;
     }
 
-    public void generateGameField(boolean restore)
-    {
+    public void generateGameField(boolean restore) {
         int screenWidth = containerLayout.getWidth();
         int screenHeight = containerLayout.getHeight();
 
@@ -216,16 +212,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             coloring = Helper.calculateColoring(gameState);
 
         // Assign buttons
-        for (int i = 0; i < currentDim * currentDim; i++)
-        {
+        for (int i = 0; i < currentDim * currentDim; i++) {
             final int currentNumber = (restore ? gameState[yCounter][xCounter++] : combination.get(i));
             if (!restore)
                 gameState[yCounter][xCounter++] = currentNumber;
 
             final NumberButton nb = result.getButtons()[i];
 
-            if ((i + 1) % currentDim == 0)
-            {
+            if ((i + 1) % currentDim == 0) {
                 xCounter = 0;
                 yCounter++;
             }
@@ -246,14 +240,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if (isGameOver)
                     return;
 
-                if (isPaused)
-                {
+                if (isPaused) {
                     isPaused = false;
                     gameTimer.resume();
                 }
 
-                if (!gameTimer.isRunning())
-                {
+                if (!gameTimer.isRunning()) {
                     gameTimer.start();
                     isGameStarted = true;
                 }
@@ -278,21 +270,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if (index % currentDim == 0)
                     minus = -1;
 
-                int[] indices = new int[] { minus, plus, index - currentDim, index + currentDim};
-                for (int dex : indices)
-                {
-                    if (dex < 0 && dex > currentDim *  currentDim - 1)
+                int[] indices = new int[]{minus, plus, index - currentDim, index + currentDim};
+                for (int dex : indices) {
+                    if (dex < 0 && dex > currentDim * currentDim - 1)
                         continue;
 
                     int value = Helper.getValueOfMatrixByIndex(gameState, dex);
-                    if (value == 0)
-                    {
+                    if (value == 0) {
                         NumberButton nbSearched = result.getButtons()[dex];
-                        NumberButton nbClicked = (NumberButton)view;
+                        NumberButton nbClicked = (NumberButton) view;
 
                         // Swap positions on screen
-                        RelativeLayout.LayoutParams nbSearchedLayoutParams = (RelativeLayout.LayoutParams)nbSearched.getLayoutParams();
-                        RelativeLayout.LayoutParams nbClickedLayoutParams = (RelativeLayout.LayoutParams)nbClicked.getLayoutParams();
+                        RelativeLayout.LayoutParams nbSearchedLayoutParams = (RelativeLayout.LayoutParams) nbSearched.getLayoutParams();
+                        RelativeLayout.LayoutParams nbClickedLayoutParams = (RelativeLayout.LayoutParams) nbClicked.getLayoutParams();
 
                         int oldLeft = nbClickedLayoutParams.leftMargin;
                         int oldTop = nbClickedLayoutParams.topMargin;
@@ -322,9 +312,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         currentMoves++;
                         DisplayMoves();
 
-                        if (Helper.isMatrix123n(gameState))
-                        {
-                            long seconds =  gameTimer.getElapsedTimeSeconds();
+                        if (Helper.isMatrix123n(gameState)) {
+                            long seconds = gameTimer.getElapsedTimeSeconds();
                             gameTimer.stop();
 
                             UserStatistics statistics = settings.getUserStatistics();
@@ -353,8 +342,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         containerLayout.addView(result.getLayout());
     }
 
-    public void generateField()
-    {
+    public void generateField() {
         // Reset counters
         DisplayMoves();
         currentMoves = 0;
@@ -374,49 +362,33 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     @Override
-    public void onClick(View v)
-    {
+    public void onClick(View v) {
         v.startAnimation(buttonClickAnimation);
+
+        boolean showActivity = false;
+        Class packageClass = null;
 
         if (v.equals(playButton))
             showPopup(v);
-        else if (v.equals(helpButton))
-        {
-            if (!isGameOver && isGameStarted && !isPaused)
-            {
-                gameTimer.pause();
-                isPaused = true;
-            }
-
-            Intent helpIntent = new Intent(this, HelpActivity.class);
-            startActivity(helpIntent);
+        else if (v.equals(helpButton)) {
+            showActivity = true;
+            packageClass = HelpActivity.class;
+        } else if (v.equals(aboutButton)) {
+            showActivity = true;
+            packageClass = InfoActivity.class;
+        } else if (v.equals(settingsButton)) {
+            showActivity = true;
+            packageClass = SettingsActivity.class;
         }
-        else if (v.equals(aboutButton))
-        {
-            if (!isGameOver && isGameStarted && !isPaused)
-            {
-                gameTimer.pause();
-                isPaused = true;
-            }
 
-            Intent aboutIntent = new Intent(this, InfoActivity.class);
-            startActivity(aboutIntent);
-        }
-        else if (v.equals(settingsButton))
-        {
-            if (!isGameOver && isGameStarted && !isPaused)
-            {
-                gameTimer.pause();
-                isPaused = true;
-            }
-
-            Intent settingsIntent = new Intent(this, SettingsActivity.class);
+        if (showActivity) {
+            pauseGame();
+            Intent settingsIntent = new Intent(this, packageClass);
             startActivity(settingsIntent);
         }
     }
 
-    private void showPopup(View v)
-    {
+    private void showPopup(View v) {
         PopupMenu popup = new PopupMenu(this, v);
         // Inflate the menu from xml
         popup.getMenuInflater().inflate(R.menu.popup, popup.getMenu());
@@ -433,8 +405,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             switch (item.getItemId()) {
                 case R.id.menuStartPause:
 
-                    if (!isPaused)
-                    {
+                    if (!isPaused) {
                         isPaused = true;
                         gameTimer.pause();
                     }
@@ -468,6 +439,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     startNewGame(10);
                     return true;
                 case R.id.showStatistics:
+                    pauseGame();
                     Intent intent = new Intent(this, StatisticsActivity.class);
                     startActivity(intent);
                     return true;
@@ -482,8 +454,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         popup.show();
     }
 
-    private void startNewGame(int dim)
-    {
+    private void startNewGame(int dim) {
         // Put this dimension to settings, so it is used as the last default dimension at the next startup
         settings.setDefaultDimension(dim);
         settings.saveSettings();
@@ -497,5 +468,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         isGameStarted = false;
         isGameOver = false;
         isPaused = false;
+    }
+
+    private void pauseGame() {
+        if (!isGameOver && isGameStarted && !isPaused) {
+            gameTimer.pause();
+            isPaused = true;
+        }
     }
 }
