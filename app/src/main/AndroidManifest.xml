@@ -13,6 +13,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".StatisticsActivity"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/SubTheme" />
+        <activity
             android:name=".SettingsActivity"
             android:parentActivityName=".MainActivity"
             android:theme="@style/SubTheme" />
@@ -45,4 +49,5 @@
                 android:resource="@xml/provider_paths" />
         </provider>
     </application>
+
 </manifest>

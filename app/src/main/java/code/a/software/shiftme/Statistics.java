@@ -17,7 +17,16 @@ public class Statistics {
     }
 
     public long getAvgTimePerLevel() {
+        if (puzzlesSolved == 0)
+            return 0;
         return totalTimePlayed / puzzlesSolved;
+    }
+
+    public long getAvgMovesPerLevel() {
+        if (puzzlesSolved == 0)
+            return 0;
+
+        return moves / puzzlesSolved;
     }
 
     public long getMoves() {

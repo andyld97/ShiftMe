@@ -466,6 +466,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 case R.id.menu10x10:
                     startNewGame(10);
                     return true;
+                case R.id.showStatistics:
+                    Intent intent = new Intent(this, StatisticsActivity.class);
+                    startActivity(intent);
+                    return true;
                 default:
                     return false;
             }
