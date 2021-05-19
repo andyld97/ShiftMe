@@ -82,12 +82,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         txtMoves = findViewById(R.id.txtMoves);
         txtTimer = findViewById(R.id.txtTimer);
 
+        // Load settings
+        settings = Settings.readSettings(this);
+
         // Create initial state if theres nothing saved
         if (savedInstanceState == null) {
 
             gameTimer = new Stopwatch();
             containerLayout.post(() -> {
-                startNewGame(3);
+                startNewGame(settings.getDefaultDimension());
             });
         }
 
@@ -99,8 +102,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         }, 0, 500);
 
-
-        settings = Settings.readSettings(this);
         refreshBackground();
     }
 
@@ -483,6 +484,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void startNewGame(int dim)
     {
+        // Put this dimension to settings, so it is used as the last default dimension at the next startup
+        settings.setDefaultDimension(dim);
+        settings.saveSettings();
+
         currentDim = dim;
         currentMoves = 0;
         DisplayMoves();

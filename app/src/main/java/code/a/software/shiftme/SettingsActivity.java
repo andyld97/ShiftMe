@@ -35,12 +35,9 @@ public class SettingsActivity extends AppCompatActivity {
 
         Button btnChooseBackground = findViewById(R.id.btnChooseBackground);
         Button btnClearBackground = findViewById(R.id.btnClearBackground);
-        btnClearBackground.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                MainActivity.settings.setBackgroundImagePath("");
-                MainActivity.settings.saveSettings();
-            }
+        btnClearBackground.setOnClickListener(v -> {
+            MainActivity.settings.setBackgroundImagePath("");
+            MainActivity.settings.saveSettings();
         });
 
         getSupportActionBar().setHomeButtonEnabled(true);
