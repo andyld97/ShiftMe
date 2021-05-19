@@ -46,6 +46,8 @@ public class SettingsActivity extends AppCompatActivity implements CompoundButto
         btnClearBackground.setOnClickListener(v -> {
             MainActivity.settings.setBackgroundImagePath("");
             MainActivity.settings.saveSettings();
+
+            Toast.makeText(this, getString(R.string.removedBackground), Toast.LENGTH_SHORT).show();
         });
 
         radioButtonThemeBlue = findViewById(R.id.radioButtonThemeBlue);
@@ -122,6 +124,7 @@ public class SettingsActivity extends AppCompatActivity implements CompoundButto
 
             MainActivity.settings.setBackgroundImagePath(picturePath);
             MainActivity.settings.saveSettings();
+            Toast.makeText(this, getString(R.string.addedBackground), Toast.LENGTH_SHORT).show();
         }
     }
 

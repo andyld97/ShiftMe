@@ -36,7 +36,7 @@
     </string>
     <string name="strAboutText">プログラム：Code A Software (Andreas Leopold)</string>
     <string name="icons8">で使用されているアイコンです\nhttps://icons8.com/</string>
-    <string name="version">Version 1.0.1 (© 2021)</string>
+    <string name="version">Version 1.0.2 (© 2021)</string>
     <string name="settings">設定</string>
     <string name="selectImage">画像の選択</string>
     <string name="restartApp">アプリを再起動すると、テーマが適用されます。</string>
@@ -46,6 +46,8 @@
     <string name="statLevel">レベル:</string>
     <string name="statAvgTime">Ø 時間:</string>
     <string name="statMovesAVG">Ø ムーブ:</string>
+    <string name="removedBackground">背景画像を削除しました</string>
+    <string name="addedBackground">背景画像が設定されました</string>
     <string-array name="level_items">
         <item>3x3</item>
         <item>4x4</item>
