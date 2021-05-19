@@ -27,7 +27,7 @@ public class StatisticsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_statistics);
 
         getSupportActionBar().setHomeButtonEnabled(true);
-        setTitle("Statistik");
+        setTitle(getString(R.string.statistics));
 
         UserStatistics userStatistics = MainActivity.settings.getUserStatistics();
 
@@ -62,7 +62,9 @@ public class StatisticsActivity extends AppCompatActivity {
             }
         });
 
-        displayLevel(MainActivity.settings.getDefaultDimension() - 3);
+        int index = MainActivity.settings.getDefaultDimension() - 3;
+        spinner.setSelection(index);
+        displayLevel(index);
     }
 
 

@@ -19,6 +19,17 @@
     <string name="level10x10">10x10</string>
     <string name="wonMessage">あなたの勝ちです!</string>
     <string name="backgroundContentDescription">背景</string>
+    <string name="background">背景</string>
+    <string name="chooseBackground">背景の選択</string>
+    <string name="deleteBackground">クリアな背景</string>
+    <string name="design">デザイン</string>
+    <string name="designStandard">スタンダード（ブルー)</string>
+    <string name="designRed">レッド</string>
+    <string name="designGreen">グリーン</string>
+    <string name="designPurple">パープル</string>
+    <string name="designGray">グレー</string>
+    <string name="statistics">統計情報</string>
+    <string name="statTime">時間です:</string>
     <string name="gameExplanationTitle">ゲームの原理</string>
     <string name="gameExplanation">
         目標は、1,2,3|4,5,6|7,8のように、数字が正しい順序で並ぶように並べることです。\n\n自由な隣人がいる駒しか動かせません。つまり、石の左、右、上、下のいずれかに空きのあるマスがあれば、石を動かすことができるのです。\n\n石を移動させるには、その石をクリックするだけで、自動的に正しい場所に移動されます。
@@ -26,6 +37,15 @@
     <string name="strAboutText">プログラム：Code A Software (Andreas Leopold)</string>
     <string name="icons8">で使用されているアイコンです\nhttps://icons8.com/</string>
     <string name="version">Version 1.0.1 (© 2021)</string>
+    <string name="settings">設定</string>
+    <string name="selectImage">画像の選択</string>
+    <string name="restartApp">アプリを再起動すると、テーマが適用されます。</string>
+    <string name="statTotal">合計です:</string>
+    <string name="statMoves">ムーブです:</string>
+    <string name="statPuzzlesSolved">レベルは解決しました:</string>
+    <string name="statLevel">レベル:</string>
+    <string name="statAvgTime">Ø 時間:</string>
+    <string name="statMovesAVG">Ø ムーブ:</string>
     <string-array name="level_items">
         <item>3x3</item>
         <item>4x4</item>

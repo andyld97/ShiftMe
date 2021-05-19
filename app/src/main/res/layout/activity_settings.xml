@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
-        android:text="Hintergrund"
+        android:text="@string/background"
         android:textSize="20sp" />
 
     <LinearLayout
@@ -26,14 +26,14 @@
             android:id="@+id/btnChooseBackground"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Hintergrund auswählen"
+            android:text="@string/chooseBackground"
             android:textAllCaps="false" />
 
         <Button
             android:id="@+id/btnClearBackground"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Hintergrund löschen"
+            android:text="@string/deleteBackground"
             android:textAllCaps="false" />
 
     </LinearLayout>
@@ -43,37 +43,37 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="8dp"
-        android:text="Design"
+        android:text="@string/design"
         android:textSize="20sp" />
 
     <RadioButton
         android:id="@+id/radioButtonThemeBlue"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Standard (Blau)" />
+        android:text="@string/designStandard" />
 
     <RadioButton
         android:id="@+id/radioButtonThemeRed"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Rot" />
+        android:text="@string/designRed" />
 
     <RadioButton
         android:id="@+id/radioButtonThemeGreen"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Grün" />
+        android:text="@string/designGreen" />
 
     <RadioButton
         android:id="@+id/radioButtonThemePurple"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Lila" />
+        android:text="@string/designPurple" />
 
     <RadioButton
         android:id="@+id/radioButtonThemeGray"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Gray" />
+        android:text="@string/designGray" />
 
 </LinearLayout>

@@ -14,5 +14,5 @@
             <item android:id="@+id/menu10x10" android:title="@string/level10x10" />
         </menu>
     </item>
-    <item android:id="@+id/showStatistics" android:title="Statistik" />
+    <item android:id="@+id/showStatistics" android:title="@string/statistics" />
 </menu>

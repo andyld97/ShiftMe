@@ -75,7 +75,7 @@ public class SettingsActivity extends AppCompatActivity implements CompoundButto
             btn.setOnCheckedChangeListener(this);
 
         getSupportActionBar().setHomeButtonEnabled(true);
-        setTitle("Einstellungen");
+        setTitle(getString(R.string.settings));
 
         // Request for WRITE_EXTERNAL_STORAGE permission (required for background-images)
         int hasWriteContactsPermission = checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE);
@@ -94,7 +94,7 @@ public class SettingsActivity extends AppCompatActivity implements CompoundButto
                 Intent pickIntent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                 pickIntent.setType("image/*");
 
-                Intent chooserIntent = Intent.createChooser(getIntent, "Select Image");
+                Intent chooserIntent = Intent.createChooser(getIntent, getString(R.string.selectImage));
                 chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, new Intent[]{pickIntent});
 
                 startActivityForResult(chooserIntent, PICK_IMAGE);
@@ -140,7 +140,7 @@ public class SettingsActivity extends AppCompatActivity implements CompoundButto
             MainActivity.settings.setThemeID(themeIndex);
             MainActivity.settings.saveSettings();
 
-            Toast.makeText(this, "Bitte die App neustarten, damit das Theme angewendet werden kann!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.restartApp), Toast.LENGTH_SHORT).show();
         }
     }
 }
