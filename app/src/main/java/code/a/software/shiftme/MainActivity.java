@@ -323,7 +323,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                         if (Helper.isMatrix123n(gameState))
                         {
+                            long seconds =  gameTimer.getElapsedTimeSeconds();
                             gameTimer.stop();
+
+                            UserStatistics statistics = settings.getUserStatistics();
+
+                            statistics.getTotalStatistics().incrementPuzzlesSolved(1);
+                            statistics.getTotalStatistics().incrementTotalTimePlayed(seconds);
+                            statistics.getTotalStatistics().incrementMoves(currentMoves);
+
+                            statistics.getLevelStatistics(currentDim - 3).incrementPuzzlesSolved(1);
+                            statistics.getLevelStatistics(currentDim - 3).incrementTotalTimePlayed(seconds);
+                            statistics.getLevelStatistics(currentDim - 3).incrementMoves(currentMoves);
+                            settings.saveSettings();
+
                             isGameOver = true;
                             isGameStarted = false;
                             Toast.makeText(MainActivity.this, getString(R.string.wonMessage), Toast.LENGTH_LONG).show();
