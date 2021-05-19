@@ -43,9 +43,9 @@ public class StatisticsActivity extends AppCompatActivity {
         txtCurrentLevelSolved = findViewById(R.id.txtCurrentLevelSolved);
 
         Spinner spinner = findViewById(R.id.spinnerSelectLevel);
-      ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.level_items, R.layout.spinner_list);
-       adapter.setDropDownViewResource(R.layout.spinner_list);
-       spinner.setAdapter(adapter);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.level_items, R.layout.spinner_list);
+        adapter.setDropDownViewResource(R.layout.spinner_list);
+        spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {

@@ -77,6 +77,9 @@ public class SettingsActivity extends AppCompatActivity {
 
         if (requestCode == PICK_IMAGE)
         {
+            if (data == null)
+                return;
+
             Uri selectedImage = data.getData();
             String[] filePathColumn = { MediaStore.Images.Media.DATA };
 
