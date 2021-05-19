@@ -3,6 +3,4 @@
     <color name="colorPrimary">#161A1A</color>
     <color name="colorPrimaryDark">#161A1A</color>
     <color name="colorAccent">#D81B60</color>
-    <color name="colorFinishRow">#8034DE81</color>
-    <color name="colorTransparentBlueBackground">#8000BFFF</color>
 </resources>

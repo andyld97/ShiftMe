@@ -1,16 +1,88 @@
 <resources>
     <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="colorTransparentBackground">#8000BFFF</item>
+        <item name="colorFinishRow">#8034DE81</item>
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:statusBarColor">@color/colorTransparentBlueBackground</item>
+        <item name="android:statusBarColor">?colorTransparentBackground</item>
     </style>
 
     <style name="SubTheme" parent="Theme.AppCompat.Light">
-        <item name="colorPrimary">@color/colorTransparentBlueBackground</item>
+        <item name="colorTransparentBackground">#8000BFFF</item>
+        <item name="colorFinishRow">#8034DE81</item>
+        <item name="colorPrimary">?colorTransparentBackground</item>
         <item name="colorPrimaryDark">#FFF</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:statusBarColor">@color/colorTransparentBlueBackground</item>
+        <item name="android:statusBarColor">?colorTransparentBackground</item>
         <item name="android:windowLightStatusBar">false</item>
+    </style>
+
+    <style name="AppTheme.Red" parent="AppTheme">
+        <item name="colorTransparentBackground">#80FA5858</item>
+        <item name="colorFinishRow">#8034DE81</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="android:statusBarColor">?colorTransparentBackground</item>
+    </style>
+
+    <style name="SubTheme.Red" parent="SubTheme">
+        <item name="colorTransparentBackground">#80FA5858</item>
+        <item name="colorFinishRow">#8034DE81</item>
+        <item name="colorPrimary">?colorTransparentBackground</item>
+        <item name="colorPrimaryDark">#FFF</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:statusBarColor">?colorTransparentBackground</item>
+    </style>
+
+    <style name="AppTheme.Green" parent="AppTheme">
+        <item name="colorTransparentBackground">#8004B45F</item>
+        <item name="colorFinishRow">#800B6121</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="android:statusBarColor">?colorTransparentBackground</item>
+    </style>
+
+    <style name="SubTheme.Green" parent="SubTheme">
+        <item name="colorTransparentBackground">#8004B45F</item>
+        <item name="colorFinishRow">#800B6121</item>
+        <item name="colorPrimary">?colorTransparentBackground</item>
+        <item name="colorPrimaryDark">#FFF</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:statusBarColor">?colorTransparentBackground</item>
+    </style>
+
+    <style name="AppTheme.Purple" parent="AppTheme">
+        <item name="colorTransparentBackground">#80B4045F</item>
+        <item name="colorFinishRow">#8034DE81</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="android:statusBarColor">?colorTransparentBackground</item>
+    </style>
+
+    <style name="SubTheme.Purple" parent="SubTheme">
+        <item name="colorTransparentBackground">#80B4045F</item>
+        <item name="colorFinishRow">#8034DE81</item>
+        <item name="colorPrimary">?colorTransparentBackground</item>
+        <item name="colorPrimaryDark">#FFF</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:statusBarColor">?colorTransparentBackground</item>
+    </style>
+
+    <style name="AppTheme.Gray" parent="AppTheme">
+        <item name="colorTransparentBackground">#80A4A4A4</item>
+        <item name="colorFinishRow">#8034DE81</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="android:statusBarColor">?colorTransparentBackground</item>
+    </style>
+
+    <style name="SubTheme.Gray" parent="SubTheme">
+        <item name="colorTransparentBackground">#80A4A4A4</item>
+        <item name="colorFinishRow">#8034DE81</item>
+        <item name="colorPrimary">?colorTransparentBackground</item>
+        <item name="colorPrimaryDark">#FFF</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:statusBarColor">?colorTransparentBackground</item>
     </style>
 </resources>

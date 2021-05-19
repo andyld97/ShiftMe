@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import helpers.ThemeHelper;
+
 public class StatisticsActivity extends AppCompatActivity {
 
     private TextView txtCurrentLevelTime;
@@ -20,6 +22,8 @@ public class StatisticsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        setTheme(ThemeHelper.getSubThemeId(MainActivity.settings.getThemeID()));
         setContentView(R.layout.activity_statistics);
 
         getSupportActionBar().setHomeButtonEnabled(true);
@@ -58,7 +62,7 @@ public class StatisticsActivity extends AppCompatActivity {
             }
         });
 
-        displayLevel(0);
+        displayLevel(MainActivity.settings.getDefaultDimension() - 3);
     }
 
 

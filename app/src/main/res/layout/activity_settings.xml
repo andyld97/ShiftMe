@@ -2,32 +2,78 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/rootLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginLeft="5dp"
     android:orientation="vertical"
     tools:context=".SettingsActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="Hintergrund"
+        android:textSize="20sp" />
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_gravity="center"
-        >
+        android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/btnChooseBackground"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hintergrund auswählen"
-        android:textAllCaps="false"  />
+        <Button
+            android:id="@+id/btnChooseBackground"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hintergrund auswählen"
+            android:textAllCaps="false" />
 
-    <Button
-        android:id="@+id/btnClearBackground"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hintergrund löschen"
-        android:textAllCaps="false"  />
+        <Button
+            android:id="@+id/btnClearBackground"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hintergrund löschen"
+            android:textAllCaps="false" />
 
     </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="8dp"
+        android:text="Design"
+        android:textSize="20sp" />
+
+    <RadioButton
+        android:id="@+id/radioButtonThemeBlue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Standard (Blau)" />
+
+    <RadioButton
+        android:id="@+id/radioButtonThemeRed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Rot" />
+
+    <RadioButton
+        android:id="@+id/radioButtonThemeGreen"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Grün" />
+
+    <RadioButton
+        android:id="@+id/radioButtonThemePurple"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Lila" />
+
+    <RadioButton
+        android:id="@+id/radioButtonThemeGray"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Gray" />
+
 </LinearLayout>

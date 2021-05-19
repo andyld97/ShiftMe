@@ -1,36 +1,44 @@
 package code.a.software.shiftme;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
-
 import android.Manifest;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
+import android.widget.CompoundButton;
+import android.widget.RadioButton;
+import android.widget.Toast;
 
-import java.io.FileNotFoundException;
-import java.io.InputStream;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
-public class SettingsActivity extends AppCompatActivity {
+import java.util.Arrays;
+
+import helpers.ThemeHelper;
+
+public class SettingsActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener {
 
     private final int PICK_IMAGE = 666;
     private final int REQUEST_CODE_ASK_PERMISSIONS = 665;
 
+    private RadioButton radioButtonThemeBlue;
+    private RadioButton radioButtonThemeRed;
+    private RadioButton radioButtonThemeGreen;
+    private RadioButton radioButtonThemePurple;
+    private RadioButton radioButtonThemeGray;
+
+    private RadioButton[] themeButtons;
+    private int[] themes;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        setTheme(ThemeHelper.getSubThemeId(MainActivity.settings.getThemeID()));
         setContentView(R.layout.activity_settings);
 
         Button btnChooseBackground = findViewById(R.id.btnChooseBackground);
@@ -40,13 +48,39 @@ public class SettingsActivity extends AppCompatActivity {
             MainActivity.settings.saveSettings();
         });
 
+        radioButtonThemeBlue = findViewById(R.id.radioButtonThemeBlue);
+        radioButtonThemeRed = findViewById(R.id.radioButtonThemeRed);
+        radioButtonThemeGreen = findViewById(R.id.radioButtonThemeGreen);
+        radioButtonThemePurple = findViewById(R.id.radioButtonThemePurple);
+        radioButtonThemeGray = findViewById(R.id.radioButtonThemeGray);
+
+        themeButtons = new RadioButton[]{radioButtonThemeBlue, radioButtonThemeRed, radioButtonThemeGreen, radioButtonThemePurple, radioButtonThemeGray};
+        themes = new int[]{R.style.AppTheme, R.style.AppTheme_Red, R.style.AppTheme_Green, R.style.AppTheme_Purple, R.style.AppTheme_Gray};
+
+        int currentTheme = MainActivity.settings.getThemeID();
+        if (currentTheme == -1)
+            currentTheme = R.style.AppTheme;
+
+        // Find theme index
+        int index = 0;
+        for (int i = 0; i < themes.length; i++) {
+            if (themes[i] == currentTheme) {
+                index = i;
+                break;
+            }
+        }
+        themeButtons[index].setChecked(true);
+
+        for (RadioButton btn : themeButtons)
+            btn.setOnCheckedChangeListener(this);
+
         getSupportActionBar().setHomeButtonEnabled(true);
         setTitle("Einstellungen");
 
         // Request for WRITE_EXTERNAL_STORAGE permission (required for background-images)
         int hasWriteContactsPermission = checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE);
         if (hasWriteContactsPermission != PackageManager.PERMISSION_GRANTED) {
-            requestPermissions(new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE},
+            requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
                     REQUEST_CODE_ASK_PERMISSIONS);
         }
 
@@ -61,7 +95,7 @@ public class SettingsActivity extends AppCompatActivity {
                 pickIntent.setType("image/*");
 
                 Intent chooserIntent = Intent.createChooser(getIntent, "Select Image");
-                chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, new Intent[] {pickIntent});
+                chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, new Intent[]{pickIntent});
 
                 startActivityForResult(chooserIntent, PICK_IMAGE);
             }
@@ -72,13 +106,12 @@ public class SettingsActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable @org.jetbrains.annotations.Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == PICK_IMAGE)
-        {
+        if (requestCode == PICK_IMAGE) {
             if (data == null)
                 return;
 
             Uri selectedImage = data.getData();
-            String[] filePathColumn = { MediaStore.Images.Media.DATA };
+            String[] filePathColumn = {MediaStore.Images.Media.DATA};
 
             Cursor cursor = getContentResolver().query(selectedImage, filePathColumn, null, null, null);
             cursor.moveToFirst();
@@ -89,6 +122,25 @@ public class SettingsActivity extends AppCompatActivity {
 
             MainActivity.settings.setBackgroundImagePath(picturePath);
             MainActivity.settings.saveSettings();
+        }
+    }
+
+    @Override
+    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+        if (isChecked) {
+
+            // Disable all other radio boxes
+            for (RadioButton btn : themeButtons) {
+                if (!btn.equals(buttonView))
+                    btn.setChecked(false);
+            }
+
+            int themeIndex = themes[Arrays.asList(themeButtons).indexOf(buttonView)];
+            setTheme(themeIndex);
+            MainActivity.settings.setThemeID(themeIndex);
+            MainActivity.settings.saveSettings();
+
+            Toast.makeText(this, "Bitte die App neustarten, damit das Theme angewendet werden kann!", Toast.LENGTH_SHORT).show();
         }
     }
 }

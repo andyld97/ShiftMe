@@ -1,9 +1,11 @@
 package code.a.software.shiftme;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.TypedValue;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
@@ -14,6 +16,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.PopupMenu;
@@ -30,6 +33,7 @@ import field.DynamicLayout;
 import helpers.Helper;
 import helpers.ImageHelper;
 import helpers.NumberHelper;
+import helpers.ThemeHelper;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -62,8 +66,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        finishColor = new ColorDrawable(getColor(R.color.colorFinishRow));
-        buttonBackgroundColor = new ColorDrawable(getColor(R.color.colorTransparentBlueBackground));
+        // Load settings
+        settings = Settings.readSettings(this);
+
+        if (settings.getThemeID() != -1)
+            setTheme(settings.getThemeID());
+
+        Resources.Theme currentTheme = getTheme();
+        buttonBackgroundColor = new ColorDrawable(ThemeHelper.getThemeColor(R.attr.colorTransparentBackground, currentTheme));
+        finishColor = new ColorDrawable(ThemeHelper.getThemeColor(R.attr.colorFinishRow, currentTheme));
 
         setContentView(R.layout.activity_main);
 
@@ -81,9 +92,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         aboutButton.setOnClickListener(this);
         txtMoves = findViewById(R.id.txtMoves);
         txtTimer = findViewById(R.id.txtTimer);
-
-        // Load settings
-        settings = Settings.readSettings(this);
 
         // Create initial state if theres nothing saved
         if (savedInstanceState == null) {
