@@ -13,7 +13,6 @@ import android.widget.CompoundButton;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Arrays;
@@ -24,12 +23,6 @@ public class SettingsActivity extends AppCompatActivity implements CompoundButto
 
     private final int PICK_IMAGE = 666;
     private final int REQUEST_CODE_ASK_PERMISSIONS = 665;
-
-    private RadioButton radioButtonThemeBlue;
-    private RadioButton radioButtonThemeRed;
-    private RadioButton radioButtonThemeGreen;
-    private RadioButton radioButtonThemePurple;
-    private RadioButton radioButtonThemeGray;
 
     private RadioButton[] themeButtons;
     private int[] themes;
@@ -50,11 +43,11 @@ public class SettingsActivity extends AppCompatActivity implements CompoundButto
             Toast.makeText(this, getString(R.string.removedBackground), Toast.LENGTH_SHORT).show();
         });
 
-        radioButtonThemeBlue = findViewById(R.id.radioButtonThemeBlue);
-        radioButtonThemeRed = findViewById(R.id.radioButtonThemeRed);
-        radioButtonThemeGreen = findViewById(R.id.radioButtonThemeGreen);
-        radioButtonThemePurple = findViewById(R.id.radioButtonThemePurple);
-        radioButtonThemeGray = findViewById(R.id.radioButtonThemeGray);
+        RadioButton radioButtonThemeBlue = findViewById(R.id.radioButtonThemeBlue);
+        RadioButton radioButtonThemeRed = findViewById(R.id.radioButtonThemeRed);
+        RadioButton radioButtonThemeGreen = findViewById(R.id.radioButtonThemeGreen);
+        RadioButton radioButtonThemePurple = findViewById(R.id.radioButtonThemePurple);
+        RadioButton radioButtonThemeGray = findViewById(R.id.radioButtonThemeGray);
 
         themeButtons = new RadioButton[]{radioButtonThemeBlue, radioButtonThemeRed, radioButtonThemeGreen, radioButtonThemePurple, radioButtonThemeGray};
         themes = new int[]{R.style.AppTheme, R.style.AppTheme_Red, R.style.AppTheme_Green, R.style.AppTheme_Purple, R.style.AppTheme_Gray};
@@ -105,7 +98,7 @@ public class SettingsActivity extends AppCompatActivity implements CompoundButto
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable @org.jetbrains.annotations.Nullable Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, @org.jetbrains.annotations.Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == PICK_IMAGE) {
