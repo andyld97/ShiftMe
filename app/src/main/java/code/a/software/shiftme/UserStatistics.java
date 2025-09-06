@@ -5,7 +5,7 @@ import android.content.SharedPreferences;
 public class UserStatistics {
     private Statistics totalStatistics = new Statistics();
 
-    private Statistics levelStatistics[] = {new Statistics(), new Statistics(), new Statistics(), new Statistics(), new Statistics(), new Statistics(), new Statistics(), new Statistics()};
+    private final Statistics[] levelStatistics = {new Statistics(), new Statistics(), new Statistics(), new Statistics(), new Statistics(), new Statistics(), new Statistics(), new Statistics()};
 
     public static UserStatistics load(SharedPreferences preferences) {
         UserStatistics userStatistics = new UserStatistics();

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginLeft="5dp"
+    android:layout_marginStart="5dp"
     android:orientation="vertical"
     tools:context=".SettingsActivity">
 
@@ -17,6 +17,7 @@
         android:textSize="20sp" />
 
     <LinearLayout
+        style="?android:attr/buttonBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -24,6 +25,7 @@
 
         <Button
             android:id="@+id/btnChooseBackground"
+            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/chooseBackground"
@@ -31,6 +33,7 @@
 
         <Button
             android:id="@+id/btnClearBackground"
+            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/deleteBackground"
@@ -49,31 +52,31 @@
     <RadioButton
         android:id="@+id/radioButtonThemeBlue"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:text="@string/designStandard" />
 
     <RadioButton
         android:id="@+id/radioButtonThemeRed"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:text="@string/designRed" />
 
     <RadioButton
         android:id="@+id/radioButtonThemeGreen"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:text="@string/designGreen" />
 
     <RadioButton
         android:id="@+id/radioButtonThemePurple"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:text="@string/designPurple" />
 
     <RadioButton
         android:id="@+id/radioButtonThemeGray"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:text="@string/designGray" />
 
 </LinearLayout>

@@ -5,18 +5,15 @@ import android.content.res.Resources;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.util.TypedValue;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
-import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.PopupMenu;
@@ -37,7 +34,6 @@ import helpers.ThemeHelper;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private FrameLayout rootLayout = null;
     private RelativeLayout containerLayout = null;
     private ImageView backgroundImageView = null;
     private TextView txtMoves = null;
@@ -79,7 +75,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         // Initialize views
-        rootLayout = findViewById(R.id.rootLayout);
         containerLayout = findViewById(R.id.containerLayout);
         backgroundImageView = findViewById(R.id.backgroundImageView);
         playButton = findViewById(R.id.btnPlay);
@@ -97,13 +92,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (savedInstanceState == null) {
 
             gameTimer = new Stopwatch();
-            containerLayout.post(() -> {
-                startNewGame(settings.getDefaultDimension());
-            });
+            containerLayout.post(() -> startNewGame(settings.getDefaultDimension()));
         }
 
         // Start refresh timer
-        new Timer().scheduleAtFixedRate(new TimerTask() {
+        new Timer().schedule(new TimerTask() {
             @Override
             public void run() {
                 MainActivity.this.runOnUiThread(() -> txtTimer.setText(String.format(getString(R.string.time), gameTimer.toString())));
@@ -114,7 +107,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void refreshBackground() {
-        if (!settings.getBackgroundImagePath().equals(""))
+        if (!settings.getBackgroundImagePath().isEmpty())
             backgroundImageView.setImageDrawable(new BitmapDrawable(getResources(), ImageHelper.loadBitmapWithEXIFOrientation(settings.getBackgroundImagePath())));
         else
             backgroundImageView.setImageResource(R.drawable.background);
@@ -404,56 +397,54 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         MenuItem mi = popup.getMenu().findItem(R.id.menuStartPause);
         if (isGameOver || !isGameStarted || isPaused)
             mi.setVisible(false);
-        else if (isGameStarted)
+        else
             mi.setTitle(getString(R.string.pause));
 
         // Setup menu item selection
         popup.setOnMenuItemClickListener(item -> {
 
-            switch (item.getItemId()) {
-                case R.id.menuStartPause:
+            int itemId = item.getItemId();
+            if (itemId == R.id.menuStartPause) {
+                if (!isPaused) {
+                    isPaused = true;
+                    gameTimer.pause();
+                }
 
-                    if (!isPaused) {
-                        isPaused = true;
-                        gameTimer.pause();
-                    }
-
-                    return true;
-                case R.id.menuReset:
-                    resetCombination();
-                    return true;
-                case R.id.menu3x3:
-                    startNewGame(3);
-                    return true;
-                case R.id.menu4x4:
-                    startNewGame(4);
-                    return true;
-                case R.id.menu5x5:
-                    startNewGame(5);
-                    return true;
-                case R.id.menu6x6:
-                    startNewGame(6);
-                    return true;
-                case R.id.menu7x7:
-                    startNewGame(7);
-                    return true;
-                case R.id.menu8x8:
-                    startNewGame(8);
-                    return true;
-                case R.id.menu9x9:
-                    startNewGame(9);
-                    return true;
-                case R.id.menu10x10:
-                    startNewGame(10);
-                    return true;
-                case R.id.showStatistics:
-                    pauseGame();
-                    Intent intent = new Intent(this, StatisticsActivity.class);
-                    startActivity(intent);
-                    return true;
-                default:
-                    return false;
+                return true;
+            } else if (itemId == R.id.menuReset) {
+                resetCombination();
+                return true;
+            } else if (itemId == R.id.menu3x3) {
+                startNewGame(3);
+                return true;
+            } else if (itemId == R.id.menu4x4) {
+                startNewGame(4);
+                return true;
+            } else if (itemId == R.id.menu5x5) {
+                startNewGame(5);
+                return true;
+            } else if (itemId == R.id.menu6x6) {
+                startNewGame(6);
+                return true;
+            } else if (itemId == R.id.menu7x7) {
+                startNewGame(7);
+                return true;
+            } else if (itemId == R.id.menu8x8) {
+                startNewGame(8);
+                return true;
+            } else if (itemId == R.id.menu9x9) {
+                startNewGame(9);
+                return true;
+            } else if (itemId == R.id.menu10x10) {
+                startNewGame(10);
+                return true;
+            } else if (itemId == R.id.showStatistics) {
+                pauseGame();
+                Intent intent = new Intent(this, StatisticsActivity.class);
+                startActivity(intent);
+                return true;
             }
+            return false;
         });
 
 

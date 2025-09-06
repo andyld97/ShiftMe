@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+import java.util.Objects;
+
 import helpers.ThemeHelper;
 
 public class InfoActivity extends AppCompatActivity {
@@ -15,7 +17,7 @@ public class InfoActivity extends AppCompatActivity {
         setTheme(ThemeHelper.getSubThemeId(MainActivity.settings.getThemeID()));
         setContentView(R.layout.activity_info);
 
-        getSupportActionBar().setHomeButtonEnabled(true);
+        Objects.requireNonNull(getSupportActionBar()).setHomeButtonEnabled(true);
         setTitle(getString(R.string.about));
     }
 }

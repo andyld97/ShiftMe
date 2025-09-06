@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.Objects;
+
 import helpers.ThemeHelper;
 
 public class StatisticsActivity extends AppCompatActivity {
@@ -26,7 +28,7 @@ public class StatisticsActivity extends AppCompatActivity {
         setTheme(ThemeHelper.getSubThemeId(MainActivity.settings.getThemeID()));
         setContentView(R.layout.activity_statistics);
 
-        getSupportActionBar().setHomeButtonEnabled(true);
+        Objects.requireNonNull(getSupportActionBar()).setHomeButtonEnabled(true);
         setTitle(getString(R.string.statistics));
 
         UserStatistics userStatistics = MainActivity.settings.getUserStatistics();
