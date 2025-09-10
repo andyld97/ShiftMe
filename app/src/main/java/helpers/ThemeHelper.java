@@ -17,8 +17,8 @@ public class ThemeHelper {
             return R.style.SubTheme_Red;
         else if (appTheme == R.style.AppTheme_Green)
             return R.style.SubTheme_Green;
-        else if (appTheme == R.style.AppTheme_Purple)
-            return R.style.SubTheme_Purple;
+        else if (appTheme == R.style.AppTheme_Blue)
+            return R.style.SubTheme_Blue;
         else if (appTheme == R.style.AppTheme_Gray)
             return R.style.SubTheme_Gray;
 

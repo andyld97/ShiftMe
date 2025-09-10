@@ -3,7 +3,9 @@ package code.a.software.shiftme;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.res.Resources;
 import android.database.Cursor;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -14,6 +16,8 @@ import android.widget.RadioButton;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 
 import java.util.Arrays;
 
@@ -32,6 +36,21 @@ public class SettingsActivity extends AppCompatActivity implements CompoundButto
         super.onCreate(savedInstanceState);
 
         setTheme(ThemeHelper.getSubThemeId(MainActivity.settings.getThemeID()));
+        Resources.Theme curTheme = getTheme();
+
+        final int color = ThemeHelper.getThemeColor(R.attr.colorTransparentBackground, curTheme);
+        final int nonTransparentColor = code.a.software.shiftme.Helper.darkenColor((color & 0x00FFFFFF) | 0xFF000000, 0.8F);
+
+        View decorView = getWindow().getDecorView();
+        ViewCompat.setOnApplyWindowInsetsListener(decorView, (v, insets) -> {
+            int statusBarHeight = insets.getInsets(WindowInsetsCompat.Type.statusBars()).top;
+            v.setPadding(0, 0, 0, 0);
+            v.setBackground(new ColorDrawable(nonTransparentColor));
+            return insets;
+        });
+        ViewCompat.requestApplyInsets(decorView);
+
+
         setContentView(R.layout.activity_settings);
 
         Button btnChooseBackground = findViewById(R.id.btnChooseBackground);
@@ -50,7 +69,7 @@ public class SettingsActivity extends AppCompatActivity implements CompoundButto
         RadioButton radioButtonThemeGray = findViewById(R.id.radioButtonThemeGray);
 
         themeButtons = new RadioButton[]{radioButtonThemeBlue, radioButtonThemeRed, radioButtonThemeGreen, radioButtonThemePurple, radioButtonThemeGray};
-        themes = new int[]{R.style.AppTheme, R.style.AppTheme_Red, R.style.AppTheme_Green, R.style.AppTheme_Purple, R.style.AppTheme_Gray};
+        themes = new int[]{R.style.AppTheme, R.style.AppTheme_Red, R.style.AppTheme_Green, R.style.AppTheme_Blue, R.style.AppTheme_Gray};
 
         int currentTheme = MainActivity.settings.getThemeID();
         if (currentTheme == -1)

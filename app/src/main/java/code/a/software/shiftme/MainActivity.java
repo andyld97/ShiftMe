@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,6 +18,9 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.PopupMenu;
+import androidx.core.view.OnApplyWindowInsetsListener;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -72,7 +76,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonBackgroundColor = new ColorDrawable(ThemeHelper.getThemeColor(R.attr.colorTransparentBackground, currentTheme));
         finishColor = new ColorDrawable(ThemeHelper.getThemeColor(R.attr.colorFinishRow, currentTheme));
 
+        final int color = ThemeHelper.getThemeColor(R.attr.colorTransparentBackground, currentTheme);
+        final int nonTransparentColor = code.a.software.shiftme.Helper.darkenColor((color & 0x00FFFFFF) | 0xFF000000, 0.8F);
+
+        View decorView = getWindow().getDecorView();
+        ViewCompat.setOnApplyWindowInsetsListener(decorView, (v, insets) -> {
+            int statusBarHeight = insets.getInsets(WindowInsetsCompat.Type.statusBars()).top;
+            v.setPadding(0, statusBarHeight, 0, 0);
+            v.setBackground( new ColorDrawable(nonTransparentColor));
+            return insets;
+        });
+
+        ViewCompat.requestApplyInsets(decorView);
+
         setContentView(R.layout.activity_main);
+
+        LinearLayout toolbar = findViewById(R.id.toolbar);
+        toolbar.setBackground(new ColorDrawable(nonTransparentColor));
 
         // Initialize views
         containerLayout = findViewById(R.id.containerLayout);

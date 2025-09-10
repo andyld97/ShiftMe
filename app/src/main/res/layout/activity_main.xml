@@ -6,8 +6,8 @@
     android:id="@+id/rootLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:saveEnabled="true"
     android:fitsSystemWindows="true"
+    android:saveEnabled="true"
     tools:context=".MainActivity">
 
     <ImageView
@@ -24,10 +24,10 @@
         android:orientation="vertical">
 
         <LinearLayout
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="0dp"
-            android:background="?colorTransparentBackground"
             android:orientation="horizontal">
 
             <LinearLayout
@@ -44,6 +44,7 @@
                     android:layout_height="wrap_content"
                     android:minLines="1"
                     android:text="Zeit: 00:00"
+                    android:textColor="#FFF"
                     android:textSize="16sp" />
 
                 <TextView
@@ -54,6 +55,7 @@
                     android:gravity="center_vertical"
                     android:text="@string/moves"
                     android:textAlignment="gravity"
+                    android:textColor="#FFF"
                     android:textSize="16sp" />
             </LinearLayout>
 
